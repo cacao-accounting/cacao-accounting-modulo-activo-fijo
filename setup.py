@@ -30,7 +30,7 @@ setup(
     description="Modulo Activo Fijo",
     long_description=descripcion,
     long_description_content_type="text/markdown",
-    packages=["cacao_accounting_activofijo"],
+    packages=["cacao_accounting_modulo_activofijo"],
     include_package_data=True,
     install_requires=[
         "cacao-accounting",
