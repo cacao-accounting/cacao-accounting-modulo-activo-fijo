@@ -15,30 +15,27 @@
 # Contributors:
 # - William José Moreno Reyes
 
-from os import path
-from flask import Blueprint
+from flask import Blueprint, render_template
 from flask_login import login_required
 from cacao_accounting.database import db
 from cacao_accounting.modulos import validar_modulo_activo, registrar_modulo
 
 
-home = path.abspath(path.dirname(__file__))
-pypath = path.join(home, "__ini__.py")
-activofijo = Blueprint("activofijo", __name__, template_folder="templates")
-moduloactivofijo = {
+blueprint = Blueprint("activofijo", __name__, template_folder="templates")
+info = {
     "modulo": "fixedassets",
     "estandar": False,
     "habilitado": True,
-    "ruta": pypath,
 }
 
 
-@activofijo.cli.command("registrar-modulo-activofijo")
+@blueprint.cli.command("registrar-modulo-activofijo")
 def registrar_modulo_activofijo():
-    registrar_modulo(moduloactivofijo)
+    registrar_modulo(info)
 
 
-@activofijo.route("/activofijo")
-@activofijo.route("/fixedassets")
+@blueprint.route("/activofijo")
+@blueprint.route("/fixedassets")
+@login_required
 def activo_fijo():
-    pass
+    return render_template("activofijo.html")
