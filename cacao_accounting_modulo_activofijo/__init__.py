@@ -25,13 +25,15 @@ blueprint = Blueprint("activofijo", __name__, template_folder="templates")
 info = {
     "modulo": "fixedassets",
     "estandar": False,
-    "habilitado": True,
+    "habilitado": False,
 }
 
 
 @blueprint.cli.command("registrar-modulo-activofijo")
 def registrar_modulo_activofijo():
+    from cacao_accounting_modulo_activofijo.db import db
     registrar_modulo(info)
+    db.create_all()
 
 
 @blueprint.route("/activofijo")
