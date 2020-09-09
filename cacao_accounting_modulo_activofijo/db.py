@@ -18,10 +18,12 @@
 
 from cacao_accounting.database import db
 
+
 class ActivoFijo(db.Model):
     """
     Define un activo fijo en la base de datos.
     """
+
     id = db.Column(db.Integer(), primary_key=True, nullable=False)
     # Datos basicos
     descripcion = db.Column(db.String(250))
@@ -32,7 +34,7 @@ class ActivoFijo(db.Model):
     # Vehiculos
     motor = db.Column(db.String(250))
     chasis = db.Column(db.String(250))
-    placa  = db.Column(db.String(50))
+    placa = db.Column(db.String(50))
     # Costo Historico
     costo = db.Column(db.Float(precision=4, asdecimal=True))
     tasacambio = db.Column(db.Float(precision=4, asdecimal=True))

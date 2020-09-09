@@ -17,21 +17,27 @@
 
 from flask import Blueprint, render_template
 from flask_login import login_required
-from cacao_accounting.database import db
-from cacao_accounting.modulos import validar_modulo_activo, registrar_modulo
+from cacao_accounting.modulos import registrar_modulo
 
 
+nombre_modulo = "fixedassets"
 blueprint = Blueprint("activofijo", __name__, template_folder="templates")
 info = {
-    "modulo": "fixedassets",
+    "modulo": nombre_modulo,
     "estandar": False,
     "habilitado": False,
 }
+url = "activofijo.activo_fijo"
+nombre = "Activo Fijo"
 
 
 @blueprint.cli.command("registrar-modulo-activofijo")
 def registrar_modulo_activofijo():
+    """
+    Registra el modulo en la aplicacion principal.
+    """
     from cacao_accounting_modulo_activofijo.db import db
+
     registrar_modulo(info)
     db.create_all()
 
