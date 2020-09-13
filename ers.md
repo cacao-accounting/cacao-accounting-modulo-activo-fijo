@@ -298,6 +298,10 @@ mediante el flujo:
 Solicitud de Compra -> Orden de Compra -> Recibo de Bodega -> Salida de Bodega simultanea con Alta de Activo Fijo
 ```
 
+El alta debe ser una item de inventario un activo fijo, en caso que varios item se vallan a considerar un solo
+activo fijo deberan integrarse dentro un Proyecto y cerrar el proyecto para dar alta a uno o varios Activos
+Fijos nuevos.
+
 Una funcionalidad futura del módulo de Activo Fijo debe ser poder integrar el alta de un nuevo
 Activo Fijo con el cierre de una cuenta de un Proyecto, por ejemplo la construcción de Edificio,
 una Bodega, una Planta Industrial puede resultar en el alta de uno o varios Activos Fijos, incluso
