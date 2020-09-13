@@ -96,7 +96,8 @@ En la jerarquía de familias los niveles que agrupan otras familias no
 podrán ser asignadas a un Activo Fijo individual.
 
 La familia de Activo Fijos deberá definir obligatoriamente una cuenta
-de balance para el alta de Activos Fijos y una cuenta de depreciación.
+de balance para el alta de Activos Fijos donde se registraran todos
+los Activos Fijos dados de alta a su valor historico de adquisición.
 
 Una vez dado de alta un Activo Fijo no podrá cambiarse de familia.
 
@@ -127,7 +128,8 @@ Ventas
 En la jerarquía de ubicaciones los niveles que agrupan otras ubicaciones 
 no podrán ser asignadas a un Activo Fijo individual.
 
-La ubicación del Activo Fijo deberá definir obligatoriamente una cuenta de Resultado (Gastos) para cargar la cuota de depreciación correspondiente.
+La ubicación del Activo Fijo deberá definir obligatoriamente una cuenta de Resultado
+(Gastos) para cargar la cuota de depreciación correspondiente.
 
 Una vez dado de alta un Activo Fijo podrá cambiarse de ubicación.
 
