@@ -16,34 +16,57 @@
 # - William José Moreno Reyes
 
 
+"""
+Define las tablas utilizadas por el módulo de Activo Fijo.
+"""
+
 from cacao_accounting.database import db
 
 
-class ActivoFijo(db.Model):
-    """
-    Define un activo fijo en la base de datos.
-    """
+class FamiliaActivoFijo(db.Model):
+    __table_args__ = (db.UniqueConstraint("id", "nombre", name="faf_unica"),)
+    id = db.Column(db.Integer(), nullable=False, primary_key=True)
+    activa = db.Column(db.Boolean())
+    nombre = db.Column(db.String(50))
+    entidad = db.Column(db.String(10), db.ForeignKey("entidad.id"))
+    grupo = db.Column(db.Boolean())
+    padre = db.Column(db.String(50), db.ForeignKey("familia_activo_fijo.nombre"), nullable=True)
+    cta_activo = db.Column(db.String(50), db.ForeignKey("cuentas.codigo"))
+    vida_util = db.Column(db.Integer())
+    vida_util_fiscal = db.Column(db.Integer())
 
-    id = db.Column(db.Integer(), primary_key=True, nullable=False)
-    # Datos basicos
-    descripcion = db.Column(db.String(250))
-    codigo = db.Column(db.String(250))
-    marca = db.Column(db.String(250))
-    modelo = db.Column(db.String(250))
-    serie = db.Column(db.String(250))
-    # Vehiculos
-    motor = db.Column(db.String(250))
-    chasis = db.Column(db.String(250))
-    placa = db.Column(db.String(50))
-    # Costo Historico
-    costo = db.Column(db.Float(precision=4, asdecimal=True))
-    tasacambio = db.Column(db.Float(precision=4, asdecimal=True))
-    costousd = db.Column(db.Float(precision=4, asdecimal=True))
-    # Vida Util
-    contable = db.Column(db.Integer(), nullable=True)
-    fiscal = db.Column(db.Integer(), nullable=True)
-    # Revaluos
-    avaluo = db.Column(db.Float(precision=4, asdecimal=True))
-    tasacambioavaluo = db.Column(db.Float(precision=4, asdecimal=True))
-    avaluousd = db.Column(db.Float(precision=4, asdecimal=True))
-    plazoavaluo = db.Column(db.Integer(), nullable=True)
+
+class UbicacionActivoFijo(db.Model):
+    __table_args__ = (db.UniqueConstraint("id", "nombre", name="uaf_unica"),)
+    id = db.Column(db.Integer(), nullable=False, primary_key=True)
+    activa = db.Column(db.Boolean())
+    nombre = db.Column(db.String(50))
+    entidad = db.Column(db.String(10), db.ForeignKey("entidad.id"))
+    grupo = db.Column(db.Boolean())
+    padre = db.Column(db.String(50), db.ForeignKey("ubicacion_activo_fijo.nombre"), nullable=True)
+    cta_depreciacion = db.Column(db.String(50), db.ForeignKey("cuentas.codigo"))
+
+
+class ActivoFijo(db.Model):
+    __table_args__ = (db.UniqueConstraint("id", "nombre", name="af_unico"),)
+    id = db.Column(db.Integer(), nullable=False, primary_key=True)
+    alta = db.Column(db.Date())
+    codigo = db.Column(db.String(150))
+    agrupador = db.Column(db.Boolean())
+    individual = db.Column(db.Boolean())
+    padre = db.Column(db.String(50), db.ForeignKey("activo_fijo.nombre"))
+    fisico = db.Column(db.Boolean())
+    amortizable = db.Column(db.Boolean())
+    nombre = db.Column(db.String(150), unique=True)
+    marca = db.Column(db.String(150))
+    modelo = db.Column(db.String(150))
+    serie = db.Column(db.String(150))
+    motor = db.Column(db.String(150))
+    chasis = db.Column(db.String(150))
+    placa = db.Column(db.String(150))
+    registro = db.Column(db.String(150))
+    familia = db.Column(db.String(50), db.ForeignKey("familia_activo_fijo.nombre"))
+    ubicacion = db.Column(db.String(50), db.ForeignKey("ubicacion_activo_fijo.nombre"))
+    moneda_principal = db.Column(db.String(5), db.ForeignKey("moneda.id"))
+    costo = db.Column(db.Numeric())
+    moneda_secundaria = db.Column(db.String(5), db.ForeignKey("moneda.id"))

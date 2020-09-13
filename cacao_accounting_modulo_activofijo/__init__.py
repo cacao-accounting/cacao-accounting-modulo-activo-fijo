@@ -31,7 +31,7 @@ url = "activofijo.activo_fijo"
 nombre = "Activo Fijo"
 
 
-@blueprint.cli.command("registrar-modulo-activofijo")
+@blueprint.cli.command("registrar-modulo")
 def registrar_modulo_activofijo():
     """
     Registra el modulo en la aplicacion principal.
