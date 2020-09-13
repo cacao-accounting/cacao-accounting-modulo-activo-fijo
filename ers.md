@@ -288,6 +288,16 @@ y en cualquier momento implementar control adiciones de activo fijo.
 El módulo de Activo Fijo deberá seguir el desarrollo de la plataforma Cacao Accounting
 y mantenerse compatible con lanzamientos futuros.
 
+Una funcionalidad futura del módulo de Ativo Fijo debe ser poder integrar el acta de un
+nuevo Activo Fijo con una salida de inventario, es decir debe ser posible crear un nuevo
+Activo Fijo y dar de baja al Artículo del almacen, esto es útil para Activos como computadoras,
+motores, herramientas, incluso vehiculos si la entidad por manejar la adquisión de vehiculos 
+mediante el flujo:
+
+```
+Solicitud de Compra -> Orden de Compra -> Recibo de Bodega -> Salida de Bodega simultanea con Alta de Activo Fijo
+```
+
 ## Interfaces Externas.
 
 1. Integración con la Plataforma Cacao Accounting.
