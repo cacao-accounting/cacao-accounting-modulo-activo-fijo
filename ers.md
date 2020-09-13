@@ -298,6 +298,15 @@ mediante el flujo:
 Solicitud de Compra -> Orden de Compra -> Recibo de Bodega -> Salida de Bodega simultanea con Alta de Activo Fijo
 ```
 
+Una funcionalidad futura del módulo de Activo Fijo debe ser poder integrar el alta de un nuevo
+Activo Fijo con el cierre de una cuenta de un Proyecto, por ejemplo la construcción de Edificio,
+una Bodega, una Planta Industrial puede resultar en el alta de uno o varios Activos Fijos, incluso
+la creación de uno o varios Activos Fijos Agrupadores, mediante el flujo:
+
+```
+Creación de Proyecto -> Registro de Gastos en el Proyecto -> Cierre de Proyecto -> Alta de uno o varios Activos Nuevos
+```
+
 ## Interfaces Externas.
 
 1. Integración con la Plataforma Cacao Accounting.
