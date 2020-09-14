@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido %}
+<main class="pf-c-page__main" tabindex="-1" id="main-content-page-default-nav-example">
+    <section class="pf-c-page__main-section pf-m-light">
+      <div class="pf-c-content">
+        <h1>Ubicaciones de Activos Fijos.</h1>
+        <button class=""pf-c-button pf-m-primary">
+            <a href="{{ url_for("activofijo.nueva_ubicacion") }}" class="pf-c-nav__link">Nueva Ubicación de Activo Fijo</a>
+        </button>
+      </div>
+    </section>
+  </main>
+{% endblock %}

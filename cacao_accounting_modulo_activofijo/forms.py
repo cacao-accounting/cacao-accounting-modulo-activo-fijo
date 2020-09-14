@@ -14,3 +14,19 @@
 #
 # Contributors:
 # - William José Moreno Reyes
+
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
+
+
+class FamiliaActivoFijo(FlaskForm):
+    pass
+
+
+class UbicacionActivoFijo(FlaskForm):
+    pass
+
+
+class ActivoFijo(FlaskForm):
+    pass

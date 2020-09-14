@@ -47,3 +47,39 @@ def registrar_modulo_activofijo():
 @login_required
 def activo_fijo():
     return render_template("activofijo.html")
+
+
+@blueprint.route("/fixedassets/families")
+@login_required
+def lista_familias():
+    return render_template("lists/familia.html")
+
+
+@blueprint.route("/fixedassets/locations")
+@login_required
+def lista_ubicaciones():
+    return render_template("lists/ubicacion.html")
+
+
+@blueprint.route("/fixedassets/assets")
+@login_required
+def lista_activos():
+    return render_template("lists/registro.html")
+
+
+@blueprint.route("/fixedassets/newfamily")
+@login_required
+def nueva_familia():
+    return render_template("forms/familia.html")
+
+
+@blueprint.route("/fixedassets/newlocation")
+@login_required
+def nueva_ubicacion():
+    return render_template("forms/ubicacion.html")
+
+
+@blueprint.route("/fixedassets/newasset")
+@login_required
+def nuevo_activo():
+    return render_template("forms/registro.html")
