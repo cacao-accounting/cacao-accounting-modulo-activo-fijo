@@ -17,16 +17,16 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length
 
 
 class FamiliaActivoFijo(FlaskForm):
-    pass
+    nombre = StringField("Familia Activo Fijo", validators=[DataRequired(), Length(max=50)])
 
 
 class UbicacionActivoFijo(FlaskForm):
-    pass
+    nombre = StringField("Ubicación Activo Fijo", validators=[DataRequired(), Length(max=50)])
 
 
 class ActivoFijo(FlaskForm):
-    pass
+    nombre = StringField("Activo Fijo", validators=[DataRequired(), Length(max=150)])

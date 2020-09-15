@@ -4,6 +4,20 @@
     <section class="pf-c-page__main-section pf-m-light">
       <div class="pf-c-content">
         <h1>Nuevo Registro de Activos Fijos.</h1>
+        <form novalidate class="pf-c-form pf-m-horizontal">
+          {{ form.csrf_token }}
+          <div class="pf-c-form__group">
+            <div class="pf-c-form__group-label">
+              <label class="pf-c-form__label" for="horizontal-form-name">
+                <span class="pf-c-form__label-text">Nombre</span>
+                <span class="pf-c-form__label-required" aria-hidden="true">&#42;</span>
+              </label>
+            </div>
+            <div class="pf-c-form__group-control">
+              {{ form.nombre(class="pf-c-form-control", id="form-nuevafamilia-nombre") }}
+            </div>
+          </div>
+        </form>
       </div>
     </section>
 </main>

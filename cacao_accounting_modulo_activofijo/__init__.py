@@ -70,16 +70,25 @@ def lista_activos():
 @blueprint.route("/fixedassets/newfamily")
 @login_required
 def nueva_familia():
-    return render_template("forms/familia.html")
+    from cacao_accounting_modulo_activofijo.forms import FamiliaActivoFijo
+
+    form = FamiliaActivoFijo()
+    return render_template("forms/familia.html", form=form)
 
 
 @blueprint.route("/fixedassets/newlocation")
 @login_required
 def nueva_ubicacion():
-    return render_template("forms/ubicacion.html")
+    from cacao_accounting_modulo_activofijo.forms import UbicacionActivoFijo
+
+    form = UbicacionActivoFijo()
+    return render_template("forms/ubicacion.html", form=form)
 
 
 @blueprint.route("/fixedassets/newasset")
 @login_required
 def nuevo_activo():
-    return render_template("forms/registro.html")
+    from cacao_accounting_modulo_activofijo.forms import ActivoFijo
+
+    form = ActivoFijo()
+    return render_template("forms/registro.html", form=form)
