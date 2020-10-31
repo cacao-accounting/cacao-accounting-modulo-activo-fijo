@@ -24,10 +24,10 @@ from cacao_accounting.database import db
 
 
 class FamiliaActivoFijo(db.Model):
-    __table_args__ = (db.UniqueConstraint("id", "nombre", name="faf_unica"),)
+    __table_args__ = (db.UniqueConstraint("id", "nombre", name="moduloaf-familia"),)
     id = db.Column(db.Integer(), nullable=False, primary_key=True)
     activa = db.Column(db.Boolean())
-    nombre = db.Column(db.String(50))
+    nombre = db.Column(db.String(50), unique=True)
     entidad = db.Column(db.String(10), db.ForeignKey("entidad.id"))
     grupo = db.Column(db.Boolean())
     padre = db.Column(db.String(50), db.ForeignKey("familia_activo_fijo.nombre"), nullable=True)
@@ -37,10 +37,10 @@ class FamiliaActivoFijo(db.Model):
 
 
 class UbicacionActivoFijo(db.Model):
-    __table_args__ = (db.UniqueConstraint("id", "nombre", name="uaf_unica"),)
+    __table_args__ = (db.UniqueConstraint("id", "nombre", name="moduloaf-ubicacion"),)
     id = db.Column(db.Integer(), nullable=False, primary_key=True)
     activa = db.Column(db.Boolean())
-    nombre = db.Column(db.String(50))
+    nombre = db.Column(db.String(50), unique=True)
     entidad = db.Column(db.String(10), db.ForeignKey("entidad.id"))
     grupo = db.Column(db.Boolean())
     padre = db.Column(db.String(50), db.ForeignKey("ubicacion_activo_fijo.nombre"), nullable=True)
@@ -48,13 +48,13 @@ class UbicacionActivoFijo(db.Model):
 
 
 class ActivoFijo(db.Model):
-    __table_args__ = (db.UniqueConstraint("id", "nombre", name="af_unico"),)
+    __table_args__ = (db.UniqueConstraint("id", "nombre", name="moduloaf-activofijo"),)
     id = db.Column(db.Integer(), nullable=False, primary_key=True)
     alta = db.Column(db.Date())
     codigo = db.Column(db.String(150))
     agrupador = db.Column(db.Boolean())
     individual = db.Column(db.Boolean())
-    padre = db.Column(db.String(50), db.ForeignKey("activo_fijo.nombre"))
+    padre = db.Column(db.String(50), db.ForeignKey("activo_fijo.nombre"), nullable=True)
     fisico = db.Column(db.Boolean())
     amortizable = db.Column(db.Boolean())
     nombre = db.Column(db.String(150), unique=True)
